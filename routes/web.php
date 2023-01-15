@@ -33,6 +33,5 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::resource('products', 'App\Http\Controllers\ProductController');
-Route::post('products/{id}', 'App\Http\Controllers\ProductController@destroy')->name('products.destroy');
 
 
