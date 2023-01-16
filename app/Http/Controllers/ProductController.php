@@ -50,6 +50,13 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
+        $request->validate([
+            'name' => 'required',
+            'description'  => 'required',
+            'price'  => 'required|numeric',
+            'category_id' => 'required|numeric'
+        ]);
+
         $request->validate([]);
         $product->update($request->all());
 
