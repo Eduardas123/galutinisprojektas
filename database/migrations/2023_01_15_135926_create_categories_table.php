@@ -23,10 +23,10 @@ return new class extends Migration
         
         // insert sample data in the categories table
         DB::table('categories')->insert([
-            ['name' => 'Electronics', 'description' => 'Electronics products'],
-            ['name' => 'Fashion', 'description' => 'Fashion products'],
-            ['name' => 'Home', 'description' => 'Home products'],
-            ['name' => 'Outdoors', 'description' => 'Outdoors products'],
+            ['name' => 'Elektronika', 'description' => 'Elektronikos prekės'],
+            ['name' => 'Kosmetika', 'description' => 'Kosmetikos prekės'],
+            ['name' => 'Baldai', 'description' => 'Lauko, biuro, miegamojo baldai'],
+            ['name' => 'Maistas', 'description' => 'Maisto prekės'],
         ]);
     }
 
