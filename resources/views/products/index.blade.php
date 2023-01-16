@@ -1,7 +1,10 @@
 @extends('products.layout')
 
 @section('content')
+<div class="d-flex justify-content-between align-items-center mb-3">
     <h1>Product List</h1>
+    <a href="{{ route('dashboard') }}" class="btn btn-primary">Back to Dashboard</a>
+</div>
     <a href="{{ route('products.create') }}" class="btn btn-primary mb-3">Add Product</a>
 
     <table class="table">

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -21,9 +20,9 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-
         $request->validate([
             'name' => 'required',
+            'description'  => 'required',
         ]);
 
         Category::create($request->all());
@@ -42,7 +41,11 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category)
     {
-        $request->validate([]);
+        $request->validate([
+            'name' => 'required',
+            'description'  => 'required',
+        ]);
+
         $category->update($request->all());
 
         return redirect()->route('categories.index')->with('success', 'Category updated succesfully');
@@ -50,6 +53,7 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
+        $category->products()->delete();
         $category->delete();
 
         return redirect()->route('categories.index')->with('success', 'Category deleted succesfully');

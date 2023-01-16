@@ -23,17 +23,24 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-
         $request->validate([
             'name' => 'required',
-            'description'  => 'required',
-            'price'  => 'required|numeric',
+            'description' => 'required',
+            'price' => 'required|numeric',
             'category' => 'required|numeric'
         ]);
 
+        $product = new Product;
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = $request->price;
 
-        Product::create($request->all());
-        return redirect()->route('products.index')->with('success', 'Products created succesfully');
+        $category = Category::find($request->category);
+        $product->category()->associate($category);
+
+        $product->save();
+
+        return redirect()->route('products.index')->with('success', 'Product created successfully');
     }
 
     public function show(Product $product)
@@ -44,7 +51,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::all();
-        return view('products.edit', compact('product','categories'));
+        return view('products.edit', compact('product', 'categories'));
     }
 
 
