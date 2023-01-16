@@ -23,11 +23,12 @@
 
         <div class="form-group">
             <label for="price">Price</label>
-            <input type="text" class="form-control" id="price" name="price" value="{{ old('price') }}">
+            <input type="number" min="0" step="0.01" class="form-control" id="price" name="price" value="{{ old('price') }}">
             @error('price')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
+        
 
         <div class="form-group">
             <label for="category_id">Category</label>
